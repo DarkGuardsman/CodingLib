@@ -1,6 +1,7 @@
 package com.builtbroken.jlib.data.vector;
 
-import com.builtbroken.mc.lib.helper.MathUtility;
+
+import com.builtbroken.jlib.helpers.MathHelper;
 
 import java.util.Random;
 
@@ -151,7 +152,7 @@ public abstract class Pos3D<R extends Pos3D> extends Pos2D<R>
     public R Slerp(IPos3D end, float percent)
     {
         // Dot product - the cosine of the angle between 2 vectors.
-        double dot = MathUtility.dclamp(dot(end), -1.0f, 1.0f);
+        double dot = MathHelper.dclamp(dot(end), -1.0f, 1.0f);
 
         // Acos(dot) returns the angle between start and end,
         // And multiplying that by percent returns the angle between

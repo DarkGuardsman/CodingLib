@@ -1,9 +1,5 @@
 package com.builtbroken.jlib.model;
 
-import com.builtbroken.mc.core.Engine;
-import com.builtbroken.mc.lib.transform.vector.Point;
-import com.builtbroken.mc.lib.transform.vector.Pos;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,11 +62,11 @@ public class IcoSphereCreator
 
     }
 
-    // add vertex to mesh, fix position to be on unit sphere, return index
-    private int addVertex(Pos p)
+    // add vertex to mesh, fix Vertition to be on unit sphere, return index
+    private int addVertex(Vert p)
     {
-        double length = Math.sqrt(p.getX() * p.getX() + p.getY() * p.getY() + p.getZ() * p.getZ());
-        geometry.addVert(new Pos(p.getX() / length, p.getY() / length, p.getZ() / length));
+        double length = Math.sqrt(p.x() * p.x() + p.y() * p.y() + p.z() * p.z());
+        geometry.addVert(new Vert(p.x() / length, p.y() / length, p.z() / length));
         return index++;
     }
 
@@ -90,9 +86,9 @@ public class IcoSphereCreator
         }
 
         // not in cache, calculate it
-        Pos point1 = this.geometry.getVertices().get(p1);
-        Pos point2 = this.geometry.getVertices().get(p2);
-        Pos middle = new Pos(
+        Vert point1 = this.geometry.getVertices().get(p1);
+        Vert point2 = this.geometry.getVertices().get(p2);
+        Vert middle = new Vert(
                 (point1.x() + point2.x()) / 2.0,
                 (point1.y() + point2.y()) / 2.0,
                 (point1.z() + point2.z()) / 2.0);
@@ -127,20 +123,20 @@ public class IcoSphereCreator
         // create 12 vertices of a icosahedron
         double t = (1.0 + Math.sqrt(5.0)) / 2.0;
 
-        addVertex(new Pos(-1, t, 0));
-        addVertex(new Pos(1, t, 0));
-        addVertex(new Pos(-1, -t, 0));
-        addVertex(new Pos(1, -t, 0));
+        addVertex(new Vert(-1, t, 0));
+        addVertex(new Vert(1, t, 0));
+        addVertex(new Vert(-1, -t, 0));
+        addVertex(new Vert(1, -t, 0));
 
-        addVertex(new Pos(0, -1, t));
-        addVertex(new Pos(0, 1, t));
-        addVertex(new Pos(0, -1, -t));
-        addVertex(new Pos(0, 1, -t));
+        addVertex(new Vert(0, -1, t));
+        addVertex(new Vert(0, 1, t));
+        addVertex(new Vert(0, -1, -t));
+        addVertex(new Vert(0, 1, -t));
 
-        addVertex(new Pos(t, 0, -1));
-        addVertex(new Pos(t, 0, 1));
-        addVertex(new Pos(-t, 0, -1));
-        addVertex(new Pos(-t, 0, 1));
+        addVertex(new Vert(t, 0, -1));
+        addVertex(new Vert(t, 0, 1));
+        addVertex(new Vert(-t, 0, -1));
+        addVertex(new Vert(-t, 0, 1));
 
 
         // create 20 triangles of the icosahedron
@@ -203,24 +199,24 @@ public class IcoSphereCreator
          */
         // done, now add triangles to mesh
         this.geometry.getFaces().addAll(faces);
-        this.geometry.textureCoordinates.add(new Point(0, 0));
-        this.geometry.textureCoordinates.add(new Point(0.5, 1));
-        this.geometry.textureCoordinates.add(new Point(1, 0));
+        this.geometry.textureCoordinates.add(new UVPoint(0, 0));
+        this.geometry.textureCoordinates.add(new UVPoint(0.5, 1));
+        this.geometry.textureCoordinates.add(new UVPoint(1, 0));
 
         for (Face face : this.geometry.getFaces())
         {
-            Pos v1 = geometry.getVertices().get(face.vertexIndices[0]);
-            Pos v2 = geometry.getVertices().get(face.vertexIndices[1]);
-            Pos v3 = geometry.getVertices().get(face.vertexIndices[2]);
+            Vert v1 = geometry.getVertices().get(face.vertexIndices[0]);
+            Vert v2 = geometry.getVertices().get(face.vertexIndices[1]);
+            Vert v3 = geometry.getVertices().get(face.vertexIndices[2]);
 
             //Generate normals
             //Special thanks to this site https://www.opengl.org/wiki/Calculating_a_Surface_Normal
-            Pos u = v2.sub(v1);
-            Pos v = v3.sub(v1);
+            Vert u = v2.sub(v1);
+            Vert v = v3.sub(v1);
             double x = (u.y() * v.z()) - (u.z() * v.y());
             double y = (u.z() * v.x()) - (u.x() * v.z());
             double z = (u.x() * v.y()) - (u.y() * v.x());
-            geometry.normals.add(new Pos(x, y, z).normalize());
+            geometry.normals.add(new Vert(x, y, z).normalize());
 
             face.normalIndices[0] = geometry.normals.size() - 1;
             face.normalIndices[1] = geometry.normals.size() - 1;

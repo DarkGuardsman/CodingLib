@@ -1,7 +1,5 @@
 package com.builtbroken.jlib.data.science.units;
 
-import com.builtbroken.mc.core.Engine;
-import com.builtbroken.mc.core.References;
 import com.builtbroken.jlib.type.Pair;
 
 import java.util.ArrayList;
@@ -45,9 +43,6 @@ public class UnitHelper
 			}
 			catch (NumberFormatException e)
 			{
-                if(Engine.runningAsDev)
-                    References.LOGGER.catching(e);
-
 			}
 		}
 		if (var instanceof Integer || var instanceof Float || var instanceof Double || var instanceof Long)
@@ -85,8 +80,7 @@ public class UnitHelper
 			}
 			catch (NumberFormatException e)
 			{
-                if(Engine.runningAsDev)
-                    References.LOGGER.catching(e);
+
 			}
 		}
 		if (var instanceof Integer || var instanceof Float || var instanceof Double)
@@ -124,8 +118,6 @@ public class UnitHelper
 			}
 			catch (NumberFormatException e)
 			{
-                if(Engine.runningAsDev)
-                    References.LOGGER.catching(e);
 			}
 		}
 		if (var instanceof Integer || var instanceof Float || var instanceof Double)
@@ -192,8 +184,6 @@ public class UnitHelper
 			}
 			catch (NumberFormatException e)
 			{
-                if(Engine.runningAsDev)
-                    References.LOGGER.catching(e);
 			}
 			editedString.replaceAll("[0-9]", "");
 			chars = editedString.toCharArray();

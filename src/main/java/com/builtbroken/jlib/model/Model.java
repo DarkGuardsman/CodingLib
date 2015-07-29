@@ -1,7 +1,5 @@
 package com.builtbroken.jlib.model;
 
-import com.builtbroken.mc.lib.transform.vector.Point;
-import com.builtbroken.mc.lib.transform.vector.Pos;
 import net.minecraft.client.renderer.Tessellator;
 import org.lwjgl.opengl.GL11;
 
@@ -65,8 +63,8 @@ public class Model implements Cloneable
             {
                 for (Face face : m.getFaces())
                 {
-                    Pos center = center2(m.vertices.get(face.vertexIndices[0]), m.vertices.get(face.vertexIndices[1]), m.vertices.get(face.vertexIndices[2]));
-                    Pos out = center.add(m.normals.get(face.normalIndices[0]));
+                    Vert center = center2(m.vertices.get(face.vertexIndices[0]), m.vertices.get(face.vertexIndices[1]), m.vertices.get(face.vertexIndices[2]));
+                    Vert out = center.add(m.normals.get(face.normalIndices[0]));
 
                     GL11.glBegin(GL11.GL_LINE_LOOP);
                     GL11.glVertex3f(center.xf(), center.yf(), center.zf());
@@ -94,27 +92,27 @@ public class Model implements Cloneable
 
     protected void tessVert(Mesh m, Face face, int i)
     {
-        Pos n1 = m.vertices.get(face.vertexIndices[i]);
-        Point t1 = m.textureCoordinates.get(face.textureCoordinateIndices[i]);
+        Vert n1 = m.vertices.get(face.vertexIndices[i]);
+        UVPoint t1 = m.textureCoordinates.get(face.textureCoordinateIndices[i]);
         Tessellator.instance.addVertexWithUV(n1.xf(), n1.yf(), n1.zf(), t1.xf(), t1.yf());
     }
 
     protected void renderVert(Mesh m, Face face, int i)
     {
-        Pos n1 = m.normals.get(face.normalIndices[i]);
+        Vert n1 = m.normals.get(face.normalIndices[i]);
         GL11.glNormal3f(n1.xf(), n1.yf(), n1.zf());
 
-        Pos v1 = m.getVertices().get(face.vertexIndices[i]);
+        Vert v1 = m.getVertices().get(face.vertexIndices[i]);
         GL11.glVertex3f(v1.xf(), v1.yf(), v1.zf());
 
         if (m.textureCoordinates.size() >= face.textureCoordinateIndices[i])
         {
-            Point t1 = m.textureCoordinates.get(face.textureCoordinateIndices[i]);
+            UVPoint t1 = m.textureCoordinates.get(face.textureCoordinateIndices[i]);
             GL11.glTexCoord2f(t1.xf(), t1.yf());
         }
     }
 
-    static Pos center2(Pos v1, Pos v2, Pos v3)
+    static Vert center2(Vert v1, Vert v2, Vert v3)
     {
         return v1.add(v2).add(v3).divide(3);
     }

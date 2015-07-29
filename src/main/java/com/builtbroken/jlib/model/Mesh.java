@@ -1,8 +1,5 @@
 package com.builtbroken.jlib.model;
 
-import com.builtbroken.mc.lib.transform.vector.Point;
-import com.builtbroken.mc.lib.transform.vector.Pos;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,17 +8,17 @@ import java.util.List;
  */
 public class Mesh implements Cloneable
 {
-    public final List<Pos> vertices = new ArrayList<Pos>();
-    public final List<Point> textureCoordinates = new ArrayList<Point>();
-    public final List<Pos> normals = new ArrayList<Pos>();
-    public final List<Face> faces = new ArrayList<Face>();
+    public final List<Vert> vertices = new ArrayList();
+    public final List<UVPoint> textureCoordinates = new ArrayList();
+    public final List<Vert> normals = new ArrayList();
+    public final List<Face> faces = new ArrayList();
 
-    public void addVert(Pos pos)
+    public void addVert(Vert pos)
     {
         this.vertices.add(pos);
     }
 
-    public List<Pos> getVertices() {
+    public List<Vert> getVertices() {
         return vertices;
     }
 
