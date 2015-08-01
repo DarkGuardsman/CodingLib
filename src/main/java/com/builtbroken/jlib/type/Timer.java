@@ -1,14 +1,10 @@
 package com.builtbroken.jlib.type;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-
 import java.util.HashMap;
 
 public class Timer<K>
 {
-	private final HashMap<K, Integer> clientTimer = new HashMap<K, Integer>();
-	private final HashMap<K, Integer> serverTimer = new HashMap<K, Integer>();
+	private final HashMap<K, Integer> timerCache = new HashMap<K, Integer>();
 
 	public void put(K key, int defaultTime)
 	{
@@ -39,12 +35,7 @@ public class Timer<K>
 
 	public HashMap<K, Integer> getTimeMap()
 	{
-		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER)
-		{
-			return serverTimer;
-		}
-
-		return clientTimer;
+		return timerCache;
 	}
 
 }

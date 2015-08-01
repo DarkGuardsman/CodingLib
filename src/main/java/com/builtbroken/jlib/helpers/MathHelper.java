@@ -1,7 +1,5 @@
 package com.builtbroken.jlib.helpers;
 
-import net.minecraftforge.common.util.ForgeDirection;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -230,88 +228,6 @@ public class MathHelper
 		{
 			return angle - angleGoal;
 		}
-	}
-
-	public static double updateRotation(double from, double to, double speed)
-	{
-		from = net.minecraft.util.MathHelper.wrapAngleTo180_double(from);
-		to = net.minecraft.util.MathHelper.wrapAngleTo180_double(to);
-		double delta = Math.abs(from - to);
-		if (delta > 0.001f)
-		{
-			if (from > to)
-			{
-				from += (delta >= 0) ? speed : -speed;
-			}
-			else
-			{
-				from += (delta >= 0) ? -speed : speed;
-			}
-
-			if (delta < speed + 0.1f)
-			{
-				from = to;
-			}
-		}
-		return from;
-	}
-
-	public static double updateRotation(float from, float to, float speed)
-	{
-		from = net.minecraft.util.MathHelper.wrapAngleTo180_float(from);
-		to = net.minecraft.util.MathHelper.wrapAngleTo180_float(to);
-		double delta = Math.abs(from - to);
-		if (delta > 0.001f)
-		{
-			if (from > to)
-			{
-				from += (delta >= 0) ? speed : -speed;
-			}
-			else
-			{
-				from += (delta >= 0) ? -speed : speed;
-			}
-
-			if (delta < speed + 0.1f)
-			{
-				from = to;
-			}
-		}
-		return from;
-	}
-
-	/**
-	 * gets the facing direction using the yaw angle
-	 */
-	public static ForgeDirection getFacingDirectionFromAngle(float yaw)
-	{
-		float angle = net.minecraft.util.MathHelper.wrapAngleTo180_float(yaw);
-		if (angle >= -45 && angle <= 45)
-		{
-			return ForgeDirection.SOUTH;
-		}
-		else if (angle >= 45 && angle <= 135)
-		{
-
-			return ForgeDirection.WEST;
-		}
-		else if (angle >= 135 && angle <= -135)
-		{
-
-			return ForgeDirection.NORTH;
-		}
-		else
-		{
-			return ForgeDirection.EAST;
-		}
-	}
-
-	/**
-	 * gets the facing direction using the yaw angle
-	 */
-	public static ForgeDirection getFacingDirectionFromAngle(double yaw)
-	{
-		return getFacingDirectionFromAngle((float) yaw);
 	}
 
     /** Gets the volume of a sphere
