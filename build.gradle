@@ -15,10 +15,13 @@ dependencies{
 
 //Applies the scala plugin
 apply plugin: 'scala'
+
 apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/buildScripts/index-nonmc.gradle'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'jacoco'
 
+def currentJvm = org.gradle.internal.jvm.Jvm.current()
+println "Current Java version = " + currentJvm
 
 println archivesBaseName 
 
