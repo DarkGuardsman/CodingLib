@@ -15,39 +15,14 @@ dependencies{
 
 //Applies the scala plugin
 apply plugin: 'scala'
-
 apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/buildScripts/index-nonmc.gradle'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'jacoco'
 
-ext.buildProps = file "build.properties"
-
-def currentJvm = org.gradle.internal.jvm.Jvm.current()
-println "Current Java version = " + currentJvm
-
-buildProps.withReader {
-    def prop = new Properties()
-    prop.load(it)
-    ext.config = new ConfigSlurper().parse prop
-}
-
-if (project.getProperty("bambooshortPlanName") == "BBM-Dev") {
-    group = "dev.builtbroken.codinglib"
-    archivesBaseName = "CodingLib"
-} else {
-    group = "com.builtbroken.codinglib"
-    archivesBaseName = "CodingLib"
-}
 
 println archivesBaseName 
 
-version = "${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}b"
-
-// This is used to set the local version
-if (project.hasProperty("bambooBuildNumber"))
-    version += project.bambooBuildNumber
-else
-    version += getDate()
+//version = "${version_major}.${version.mod.minor}.${version_revis}b"
 
 println "version = "+ version
 
