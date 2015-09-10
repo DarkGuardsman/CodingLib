@@ -43,7 +43,7 @@ public enum EnglishLetters
 
     private static void init()
     {
-        if (init)
+        if (!init)
         {
             ImmutableList.Builder<Character> all = new ImmutableList.Builder();
             ImmutableList.Builder<Character> l = new ImmutableList.Builder();
@@ -62,6 +62,7 @@ public enum EnglishLetters
             }
             lower_case = l.build();
             all_values = all.build();
+            init = true;
         }
     }
 
