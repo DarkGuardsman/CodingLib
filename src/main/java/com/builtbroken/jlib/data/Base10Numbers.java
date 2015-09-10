@@ -77,25 +77,26 @@ public enum Base10Numbers
     /**
      * Is the input object a valid number or can be converted
      * into a valid number
+     *
      * @param obj - object, supports int, float, double, long, char, string
      * @return true if it is a number
      */
     public static boolean isNumber(Object obj)
     {
-        if(obj instanceof Integer)
+        if (obj instanceof Integer)
             return true;
-        if(obj instanceof Float)
+        if (obj instanceof Float)
             return true;
-        if(obj instanceof Double)
+        if (obj instanceof Double)
             return true;
-        if(obj instanceof Character)
+        if (obj instanceof Character)
             return asCharList().contains(obj);
-        if(obj instanceof String)
+        if (obj instanceof String)
         {
-            char[] chars = ((String)obj).toCharArray();
-            for(char c : chars)
+            char[] chars = ((String) obj).toCharArray();
+            for (char c : chars)
             {
-                if(!asCharList().contains(obj))
+                if (!asCharList().contains(obj))
                 {
                     return false;
                 }
@@ -108,6 +109,11 @@ public enum Base10Numbers
     public int num()
     {
         return this.ordinal();
+    }
+
+    public Character character()
+    {
+        return c;
     }
 
     @Override

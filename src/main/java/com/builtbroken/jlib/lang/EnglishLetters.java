@@ -60,7 +60,7 @@ public enum EnglishLetters
                 l.add(values()[i].name().charAt(0));
                 all.add(values()[i].name().charAt(0));
             }
-            lower_case = l.build();
+            upper_case = l.build();
             all_values = all.build();
             init = true;
         }
