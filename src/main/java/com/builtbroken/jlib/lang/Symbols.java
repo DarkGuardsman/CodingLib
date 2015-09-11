@@ -1,6 +1,6 @@
 package com.builtbroken.jlib.lang;
 
-/**
+/** Enum of useful symbols to place into strings
  * Created by robert on 1/13/2015.
  */
 public enum Symbols
@@ -37,6 +37,7 @@ public enum Symbols
     QUESTION('?'),
     STAR('*');
 
+    //TODO http://character-code.com http://graphemica.com
     private final char c;
 
     Symbols(char c)
