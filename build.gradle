@@ -48,6 +48,12 @@ def getDate() {
     return formattedDate
 }
 
+dependencies 
+{
+    compile 'junit:junit:4.11'
+
+}
+
 jacocoTestReport {
     reports {
         xml.enabled = true // coveralls plugin depends on xml format report
