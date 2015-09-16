@@ -3,10 +3,6 @@ plugins {
   id 'com.github.kt3k.coveralls' version '2.0.1'
 }
 
-repositories {
-        mavenCentral()
-        jcenter()
-}
 dependencies{
     compile 'com.google.guava:guava:11.0.2'
     compile 'org.scala-lang:scala-library:2.11.1'
