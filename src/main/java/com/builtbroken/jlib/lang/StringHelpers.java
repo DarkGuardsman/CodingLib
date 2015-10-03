@@ -15,7 +15,9 @@ public final class StringHelpers
     public final static DecimalFormat NUMBER_FORMATTER_NO_DECIMALS = new DecimalFormat("#,###");
     public final static DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.00");
 
-    /** Adds padding to the right of the string
+    /**
+     * Adds padding to the right of the string
+     *
      * @param s - string
      * @param n - number of spaces
      * @return
@@ -25,7 +27,9 @@ public final class StringHelpers
         return String.format("%1$-" + n + "s", s);
     }
 
-    /** Adds padding to the left of the string
+    /**
+     * Adds padding to the left of the string
+     *
      * @param s - string
      * @param n - number of spaces
      * @return
@@ -68,17 +72,30 @@ public final class StringHelpers
      */
     public static String formatNanoTime(long nano)
     {
-        long s = nano / 1000000000;
+        long m = (nano / 1000000000) / 60;
+        long s = (nano / 1000000000) % 60;
         long ms = (nano % 1000000000) / 1000000;
         long us = ((nano % 1000000000) % 1000000) / 1000;
         long ns = ((nano % 1000000000) % 1000000) % 1000;
         String string = "";
-        string += fitIntoSpaces(s, 3) + "s  ";
-        string += fitIntoSpaces(ms, 3) + "ms  ";
-        string += fitIntoSpaces(us, 3) + "us  ";
-        string += fitIntoSpaces(ns, 3) + "ns  ";
 
-        return string;
+        if (m > 0)
+            string += fitIntoSpaces(m, 4) + "m";
+        if (s > 0)
+            string += fitIntoSpaces(s, 4) + "s";
+        if (ms > 0)
+            string += fitIntoSpaces(ms, 4) + "ms";
+        if (us > 0)
+            string += fitIntoSpaces(us, 4) + "us";
+        if (ns > 0)
+            string += fitIntoSpaces(ns, 4) + "ns";
+
+        if (string.isEmpty())
+        {
+            return "zero";
+        }
+
+        return string.trim();
     }
 
 }
