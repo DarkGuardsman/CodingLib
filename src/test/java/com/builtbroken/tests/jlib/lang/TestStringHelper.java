@@ -38,11 +38,11 @@ public class TestStringHelper extends TestCase
         assertTrue("Output should be 10m, but was " + s, "10m".equals(s));
 
         //Test combined outputs
-        s = StringHelpers.formatNanoTime(10001); //Should 3 spaces  \/
+        s = StringHelpers.formatNanoTime(10001);
         assertTrue("Output should be 10us  1ns, but was " + s, "10us   1ns".equals(s));
 
         //Test combined outputs
-        s = StringHelpers.formatNanoTime(212001010001L); //Should 3 spaces  \/
+        s = StringHelpers.formatNanoTime(212001010001L);
         assertTrue("Output should be 3m  32s   1ms  10us   1ns, but was " + s, "3m  32s   1ms  10us   1ns".equals(s));
     }
 }
