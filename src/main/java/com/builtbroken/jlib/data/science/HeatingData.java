@@ -37,18 +37,18 @@ public class HeatingData
 	 */
 	public float thermalConductivity;
 
-	public HeatingData(float meltingPoint, float boilingPoint, float fisionHeat, float vaporHeat, float specificHeat)
+	public HeatingData(float meltingPoint, float boilingPoint, float fusionHeat, float vaporHeat, float specificHeat)
 	{
 		this.meltingPoint = meltingPoint;
 		this.boilingPoint = boilingPoint;
-		this.latentFusionHeat = fisionHeat;
+		this.latentFusionHeat = fusionHeat;
 		this.latentVaporizationHeat = vaporHeat;
 		this.specificHeat = specificHeat;
 	}
 
-	public HeatingData(float meltingPoint, float boilingPoint, float fisionHeat, float vaporHeat, float specificHeat, float thermalExpansion, float thermalConductivity)
+	public HeatingData(float meltingPoint, float boilingPoint, float fusionHeat, float vaporHeat, float specificHeat, float thermalExpansion, float thermalConductivity)
 	{
-		this(meltingPoint, boilingPoint, fisionHeat, vaporHeat, specificHeat);
+		this(meltingPoint, boilingPoint, fusionHeat, vaporHeat, specificHeat);
 		this.thermalConductivity = thermalConductivity;
 		this.thermalExpasion = thermalExpansion;
 	}
