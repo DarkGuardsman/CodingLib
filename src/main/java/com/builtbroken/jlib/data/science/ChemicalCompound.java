@@ -6,10 +6,13 @@ public enum ChemicalCompound
 	/**
 	 * http://encyclopedia.airliquide.com/encyclopedia.asp?GasID=8#GeneralData
 	 */
-	BUTANE("Butane", "C4H10", MatterPhase.GAS, 58.12f, 2.48f, new HeatingData(133f, 274f, 1379.23f, 6634.23f, 88f)),
-	METHANE("Methane", "CH4", MatterPhase.GAS, 16.043f, 1.819f, new HeatingData(90.65f, 111.55f, 3656.67f, 31789.56f, 27f)),
+	BUTANE("Butane", "C4H10", MatterPhase.GAS, 58.12f, 0.0027093f, new HeatingData(133f, 274f, 1379.23f, 6634.23f, 88f)),
+	METHANE("Methane", "CH4", MatterPhase.GAS, 16.043f, 0.001816f, new HeatingData(90.65f, 111.55f, 3656.67f, 31789.56f, 27f)),
 	WATER("Water", "H20", MatterPhase.LIQUID, 18.01528f, 1000f, new HeatingData(274.15f, 373.13f, 18539.817f, 126004.1476f, 4.24f)),
-	AIR("Air", "", MatterPhase.GAS, 29f, .125f, null);
+	AIR("Air", "", MatterPhase.GAS, 29f, .125f, null),
+	AMMONIA("Ammonia", "NH3", MatterPhase.GAS, 17.031f, 0.000889f, new HeatingData(195.41f, 239.82f, 332170f, 1369500f, 298.15f)),
+	//NITRICACID("Nitric Acid", "HNO2", MatterPhase.LIQUID, 63.01f, 1.5129f, new HeatingData(231f, 356f, ));
+	;
     //http://science.jrank.org/pages/6523/Stone-Masonry-Chemical-composition.html
     //SILICON_DIOXIDE("Siliceous stone", "SiO2", MatterPhase.SOLID),
     //("Argillaceous stone", "AlO2", MatterPhase.SOLID);
