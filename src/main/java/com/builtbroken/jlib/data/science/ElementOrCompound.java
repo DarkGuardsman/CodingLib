@@ -31,6 +31,6 @@ public class ElementOrCompound {
     }
 
     public ChemicalCompound getCompound(){
-        return this.compound
+        return this.compound;
     }
 }
