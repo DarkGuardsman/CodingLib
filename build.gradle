@@ -3,51 +3,18 @@ plugins {
   id 'com.github.kt3k.coveralls' version '2.0.1'
 }
 
-dependencies{
-    compile 'com.google.guava:guava:11.0.2'
-    compile 'org.scala-lang:scala-library:2.11.1'
-    testCompile 'junit:junit:4.11'
-}
 
 //Applies the scala plugin
 apply plugin: 'scala'
 
-apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/buildScripts/index-nonmc.gradle'
+apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/buildScripts/index/index-nonmc.gradle'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'jacoco'
 
-def currentJvm = org.gradle.internal.jvm.Jvm.current()
-println "Current Java version = " + currentJvm
-
-println archivesBaseName 
-
-//version = "${version_major}.${version.mod.minor}.${version_revis}b"
-
-println "version = "+ version
-
-archivesBaseName = "CodingLib"
-
-jar {
-    manifest.mainAttributes(
-            "Built-By": System.getProperty('user.name'),
-            "Created-By": currentJvm,
-            "Implementation-Title": archivesBaseName,
-            "Implementation-Version": project.version,
-    )
-}
-
-
-
-def getDate() {
-    def date = new Date()
-    def formattedDate = date.format('yyyyMMddHHmmss')
-    return formattedDate
-}
-
-dependencies 
-{
-    compile 'junit:junit:4.11'
-
+dependencies{
+    compile 'com.google.guava:guava:11.0.2'
+    compile 'org.scala-lang:scala-library:2.11.1'
+    testCompile 'junit:junit:4.11'
 }
 
 jacocoTestReport {
@@ -56,5 +23,3 @@ jacocoTestReport {
         html.enabled = true
     }
 }
-
-file("CodingLib.txt").text = version;
