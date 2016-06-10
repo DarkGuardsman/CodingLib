@@ -7,48 +7,48 @@ import java.awt.*;
  */
 public enum Colors
 {
-	BLACK("\u00a70", Color.BLACK),
-	DARK_BLUE("\u00a71", new Color( 0, 0, 170 )),
-	DARK_GREEN("\u00a72", new Color( 0, 170, 0 )),
-	DARK_AQUA("\u00a73", new Color(  0, 170, 170 )),
-	DARK_RED("\u00a74", new Color(  170, 0, 0 )),
-	PURPLE("\u00a75", new Color(  170, 0, 170 )),
-    CORRUPTION_PURPLE("\u00a75", new Color(  71, 57, 124 )),
-	ORANGE("\u00a76", new Color(  255, 170, 0 )),
-	GREY("\u00a77", new Color(  170, 170, 170 )),
-	DARK_GREY("\u00a78", Color.DARK_GRAY),
-	INDIGO("\u00a79", new Color(  85, 85, 255 )),
-	BRIGHT_GREEN("\u00a7a", new Color(  85, 255, 85 )),
-	AQUA("\u00a7b", new Color(  85, 255, 255 )),
-	RED("\u00a7c", Color.RED),
-	PINK("\u00a7d", Color.PINK),
-	YELLOW("\u00a7e",Color.YELLOW),
-	WHITE("\u00a7f", Color.WHITE);
+    BLACK("\u00a70", Color.BLACK),
+    DARK_BLUE("\u00a71", new Color(0, 0, 170)),
+    DARK_GREEN("\u00a72", new Color(0, 170, 0)),
+    DARK_AQUA("\u00a73", new Color(0, 170, 170)),
+    DARK_RED("\u00a74", new Color(170, 0, 0)),
+    PURPLE("\u00a75", new Color(170, 0, 170)),
+    CORRUPTION_PURPLE("\u00a75", new Color(71, 57, 124)),
+    ORANGE("\u00a76", new Color(255, 170, 0)),
+    GREY("\u00a77", new Color(170, 170, 170)),
+    DARK_GREY("\u00a78", Color.DARK_GRAY),
+    INDIGO("\u00a79", new Color(85, 85, 255)),
+    BRIGHT_GREEN("\u00a7a", new Color(85, 255, 85)),
+    AQUA("\u00a7b", new Color(85, 255, 255)),
+    RED("\u00a7c", Color.RED),
+    PINK("\u00a7d", Color.PINK),
+    YELLOW("\u00a7e", Color.YELLOW),
+    WHITE("\u00a7f", Color.WHITE);
 
-	/**
-	 * The color code that will be displayed
-	 */
-	public final String code;
+    /**
+     * The color code that will be displayed
+     */
+    public final String code;
 
     //TODO replace with Color object
-	public final Color color;
+    public final Color color;
 
-	Colors(String s, Color color)
-	{
-		code = s;
-		this.color = color;
-	}
+    Colors(String s, Color color)
+    {
+        code = s;
+        this.color = color;
+    }
 
     public Color color()
     {
         return color;
     }
 
-	@Override
-	public String toString()
-	{
-		return code;
-	}
+    @Override
+    public String toString()
+    {
+        return code;
+    }
 
     public int toInt()
     {
@@ -57,6 +57,10 @@ public enum Colors
 
     public static int getIntFromColor(Color color)
     {
+        if (color == null)
+        {
+            return 4210752;
+        }
         return getIntFromColor(color.getRed(), color.getGreen(), color.getBlue());
     }
 
