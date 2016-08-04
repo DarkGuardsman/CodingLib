@@ -122,6 +122,11 @@ public abstract class Pos3D<R extends Pos3D> extends Pos2D<R>
         return divide(a, a, a);
     }
 
+    public R midpoint(IPos3D other)
+    {
+        return (R)add(other).divide(2);
+    }
+
     public double dot(IPos3D other)
     {
         return dot(other.x(), other.y(), other.z());
