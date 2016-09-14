@@ -1,5 +1,7 @@
 package com.builtbroken.jlib.lang;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.DecimalFormat;
 
 /**
@@ -80,15 +82,25 @@ public final class StringHelpers
         String string = "";
 
         if (m > 0)
+        {
             string += fitIntoSpaces(m, 4) + "m";
+        }
         if (s > 0)
+        {
             string += fitIntoSpaces(s, 4) + "s";
+        }
         if (ms > 0)
+        {
             string += fitIntoSpaces(ms, 4) + "ms";
+        }
         if (us > 0)
+        {
             string += fitIntoSpaces(us, 4) + "us";
+        }
         if (ns > 0)
+        {
             string += fitIntoSpaces(ns, 4) + "ns";
+        }
 
         if (string.isEmpty())
         {
@@ -96,6 +108,20 @@ public final class StringHelpers
         }
 
         return string.trim();
+    }
+
+    /**
+     * Converts a throwable to a simple string output for usage
+     * in displays and other basic outputs.
+     *
+     * @param t - throwable
+     * @return String
+     */
+    public static String toString(Throwable t)
+    {
+        StringWriter writer = new StringWriter();
+        t.printStackTrace(new PrintWriter(writer));
+        return writer.toString();
     }
 
 }
