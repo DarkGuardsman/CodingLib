@@ -153,6 +153,12 @@ public abstract class Pos3D<R extends Pos3D> extends Pos2D<R>
         return newPos(x() + percent * (end.x() - x()), y() + percent * (end.y() - y()), z() + percent * (end.z() - z()));
     }
 
+    @Override
+    public R floor()
+    {
+        return newPos(Math.floor(x()), Math.floor(y()), Math.floor(z()));
+    }
+
     //TODO test before using as its been slightly butchered to fit the method calls of this class
     public R Slerp(IPos3D end, float percent)
     {
