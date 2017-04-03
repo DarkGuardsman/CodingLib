@@ -24,3 +24,9 @@ jacocoTestReport {
         html.enabled = true
     }
 }
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmmss')
+    return formattedDate
+}
