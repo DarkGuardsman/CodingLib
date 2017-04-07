@@ -24,11 +24,13 @@ public class DebugPrinter
     public void nest()
     {
         nest++;
+        buildSpacer();
     }
 
     public void unnest()
     {
         nest--;
+        buildSpacer();
     }
 
     protected void buildSpacer()
@@ -43,6 +45,16 @@ public class DebugPrinter
     public void log(String msg)
     {
         logger.info(spacer + msg);
+    }
+
+    public void error(String msg)
+    {
+        logger.error(spacer + msg);
+    }
+
+    public void error(String msg, Throwable e)
+    {
+        logger.error(spacer + msg, e);
     }
 
     public void start(String msg)
