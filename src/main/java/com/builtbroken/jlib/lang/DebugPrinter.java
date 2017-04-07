@@ -24,6 +24,8 @@ public class DebugPrinter
     protected String sectionName;
     /** Is the logger enabled */
     protected boolean enabled = true;
+    /** Used in start section and end section to restore enable status of previous nest */
+    protected boolean prev_enabled = true;
 
     /**
      * Creates a new debug printer
@@ -143,13 +145,28 @@ public class DebugPrinter
     /**
      * Starts a new section, indents the section
      *
-     * @param msg - message to output
+     * @param sectionName - name of a section
+     * @param msg         - message to output
      */
     public void start(String sectionName, String msg)
     {
         this.sectionName = sectionName;
         log(msg);
         nest();
+    }
+
+    /**
+     * Starts a new section, indents the section
+     *
+     * @param sectionName - name of a section
+     * @param msg         - message to output
+     * @param enable      - changes the enabled state, used for procedural logic
+     */
+    public void start(String sectionName, String msg, boolean enable)
+    {
+        prev_enabled = this.enabled;
+        this.enabled = enable;
+        start(sectionName, msg);
     }
 
     /**
@@ -161,6 +178,7 @@ public class DebugPrinter
      */
     public void end(String msg)
     {
+        enabled = prev_enabled;
         unnest();
         log(msg);
         sectionName = null;
@@ -178,19 +196,23 @@ public class DebugPrinter
     }
 
     /**
-     * Enables logging
+     * Enables logging globally,
+     * changes previous status as well
      */
     public void enable()
     {
         enabled = true;
+        prev_enabled = true;
     }
 
     /**
-     * Disable logging
+     * Disable logging globally,
+     * changes previous status as well
      */
     public void disable()
     {
         enabled = false;
+        prev_enabled = false;
     }
 
     /**
