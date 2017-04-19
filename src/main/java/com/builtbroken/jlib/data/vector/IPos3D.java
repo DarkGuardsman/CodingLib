@@ -11,5 +11,35 @@ public interface IPos3D
 
     double y();
 
-	double z();
+    double z();
+
+    default float xf()
+    {
+        return (float) x();
+    }
+
+    default float yf()
+    {
+        return (float) y();
+    }
+
+    default float zf()
+    {
+        return (float) z();
+    }
+
+    default int xi()
+    {
+        return (int) Math.floor(x());
+    }
+
+    default int yi()
+    {
+        return (int) Math.floor(y());
+    }
+
+    default int zi()
+    {
+        return (int) Math.floor(z());
+    }
 }
