@@ -37,7 +37,7 @@ public class Pos2DBean implements Cloneable
 
     public int xi()
     {
-        return (int)x;
+        return (int)Math.floor(x);
     }
 
 
@@ -53,7 +53,7 @@ public class Pos2DBean implements Cloneable
 
     public int yi()
     {
-        return (int)y;
+        return (int)Math.floor(y);
     }
 
     @Override

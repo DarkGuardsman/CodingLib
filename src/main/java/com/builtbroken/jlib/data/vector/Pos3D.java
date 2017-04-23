@@ -233,7 +233,7 @@ public abstract class Pos3D<R extends Pos3D> extends Pos2D<R>
 
     public int zi()
     {
-        return (int) z;
+        return (int)Math.floor(z);
     }
 
     /**
