@@ -7,7 +7,27 @@ package com.builtbroken.jlib.data.vector;
  */
 public interface IPos2D
 {
-	double x();
+    double x();
 
-	double y();
+    double y();
+
+    default int xi()
+    {
+        return (int) Math.floor(x());
+    }
+
+    default int yi()
+    {
+        return (int) Math.floor(y());
+    }
+
+    default float xf()
+    {
+        return (float) x();
+    }
+
+    default float yf()
+    {
+        return (float) y();
+    }
 }
