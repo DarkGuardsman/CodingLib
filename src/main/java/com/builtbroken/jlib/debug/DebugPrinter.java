@@ -1,7 +1,10 @@
-package com.builtbroken.jlib.lang;
+package com.builtbroken.jlib.debug;
 
 
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Object used to log debug information with nested layers for easy readability
@@ -27,6 +30,8 @@ public class DebugPrinter
     /** Used in start section and end section to restore enable status of previous nest */
     protected boolean prev_enabled = true;
 
+    List<IDebugPrintListener> listeners = new ArrayList();
+
     /**
      * Creates a new debug printer
      *
@@ -39,6 +44,11 @@ public class DebugPrinter
         {
             throw new IllegalArgumentException("Logger was null");
         }
+    }
+
+    public void add(IDebugPrintListener listener)
+    {
+        this.listeners.add(listener);
     }
 
     /**
@@ -87,6 +97,10 @@ public class DebugPrinter
                 buildSpacer();
             }
             logger.info(spacer + getSectionPrefix() + msg);
+            for (IDebugPrintListener listener : listeners)
+            {
+                listener.onMessage(msg, getSectionPrefix(), spacer, false);
+            }
         }
     }
 
@@ -100,6 +114,10 @@ public class DebugPrinter
         if (enabled)
         {
             logger.error(spacer + getSectionPrefix() + msg);
+            for (IDebugPrintListener listener : listeners)
+            {
+                listener.onMessage(msg, getSectionPrefix(), spacer, true);
+            }
         }
     }
 
@@ -114,6 +132,10 @@ public class DebugPrinter
         if (enabled)
         {
             logger.error(spacer + getSectionPrefix() + msg, e);
+            for (IDebugPrintListener listener : listeners)
+            {
+                listener.onMessageWithError(msg, getSectionPrefix(), spacer, e);
+            }
         }
     }
 
