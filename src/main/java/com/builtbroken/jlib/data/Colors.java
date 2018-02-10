@@ -5,6 +5,9 @@ import java.awt.*;
 /**
  * Simple enum of pre-defined colors to keep things simple and consistent
  */
+@Deprecated
+//Going to replace with object containing the same data and registry system to allow defining more colors
+//Will be replaced by legacy translation that will reference new object as enum values
 public enum Colors
 {
     BLACK("\u00a70", Color.BLACK),
