@@ -96,7 +96,7 @@ public class DebugPrinter
             {
                 buildSpacer();
             }
-            logger.info(spacer + getSectionPrefix() + msg);
+            logger.debug(spacer + getSectionPrefix() + msg);
             for (IDebugPrintListener listener : listeners)
             {
                 listener.onMessage(msg, getSectionPrefix(), spacer, false);
