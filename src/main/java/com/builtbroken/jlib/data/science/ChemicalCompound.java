@@ -1,6 +1,7 @@
 package com.builtbroken.jlib.data.science;
 
-//TODO replace with localized data base, or data file to avoid loading up a ton of combinations when not needed
+/**@deprecated Removing as this should be JSON data loaded per application */
+@Deprecated
 public enum ChemicalCompound
 {
 	/**

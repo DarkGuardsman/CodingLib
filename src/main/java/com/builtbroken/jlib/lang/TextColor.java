@@ -2,6 +2,8 @@ package com.builtbroken.jlib.lang;
 
 import java.awt.*;
 
+/**@deprecated Removing as this should be data loaded per application */
+@Deprecated
 public enum TextColor
 {
 		BLACK("\u00a70", 0x000000, 0, 0, 0),

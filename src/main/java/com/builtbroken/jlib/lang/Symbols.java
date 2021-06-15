@@ -2,7 +2,9 @@ package com.builtbroken.jlib.lang;
 
 /** Enum of useful symbols to place into strings
  * Created by robert on 1/13/2015.
+ * @deprecated Removing as this looks unused and I suspect an enum already exists for it
  */
+@Deprecated
 public enum Symbols
 {
     EXCLAMATION('!'),

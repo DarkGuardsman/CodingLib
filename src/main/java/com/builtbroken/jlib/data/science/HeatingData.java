@@ -5,7 +5,9 @@ package com.builtbroken.jlib.data.science;
  * and heat in joules
  *
  * @author DarkGuardsman
+ * @deprecated Removing as this should be a library on it's own
  */
+@Deprecated
 public class HeatingData
 {
 	/**

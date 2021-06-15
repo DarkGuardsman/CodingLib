@@ -10,7 +10,9 @@ package com.builtbroken.jlib.data.science;
  * @Source http://www.periodictable.com/Properties/A/SpecificHeat.an.html
  * @source http://www.chemicalelements.com/
  * @source http://www.lenntech.com/periodic/periodic-chart.htm
+ * @deprecated Removing as this should be JSON data loaded per application
  */
+@Deprecated
 public enum ChemElement
 {
 	/**

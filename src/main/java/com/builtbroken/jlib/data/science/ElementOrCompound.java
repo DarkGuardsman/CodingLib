@@ -3,7 +3,9 @@ package com.builtbroken.jlib.data.science;
 /**
  * Class to Represent an Element or a compound
  * Useful for things that can have either an element OR a compound
+ * @deprecated looks like this is unused
  */
+@Deprecated
 public class ElementOrCompound {
 
     private ChemElement element;

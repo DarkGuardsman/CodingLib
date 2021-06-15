@@ -7,10 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.
- * Created by Dark(DarkGuardsman, Robert) on 8/28/2016.
- */
+/**@deprecated Removing as I see no point in including this in a common library when other libraries exist for the same purpose */
+@Deprecated
 public class HTTPHelper
 {
     public static String executePost(String targetURL, HashMap<String, String> data)

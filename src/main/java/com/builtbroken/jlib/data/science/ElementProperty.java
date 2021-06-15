@@ -1,5 +1,6 @@
 package com.builtbroken.jlib.data.science;
-
+/**@deprecated Removing as this should be JSON data loaded per application */
+@Deprecated
 public enum ElementProperty
 {
 	nonmetal("Non-metal"),
