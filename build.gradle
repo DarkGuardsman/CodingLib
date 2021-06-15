@@ -10,6 +10,7 @@ plugins{
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
+group='com.darkguardsman'
 version = '0.2.9'
 
 repositories {
@@ -61,11 +62,16 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/darkguardsman/codinglib"
+            url = uri("https://maven.pkg.github.com/darkguardsman/codinglib")
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
             }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
         }
     }
 }
