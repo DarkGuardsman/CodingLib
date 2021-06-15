@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat
 plugins{
     id 'java'
     id 'idea'
+    id 'maven-publish'
     id "io.freefair.lombok" version "5.3.0"
 }
 
@@ -53,5 +54,18 @@ jar {
                 "Implementation-Version": version,
 
         )
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/darkguardsman/codinglib"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
