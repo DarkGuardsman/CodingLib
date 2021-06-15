@@ -2,8 +2,8 @@ package com.builtbroken.tests.jlib.lang;
 
 import com.builtbroken.jlib.data.Base10Numbers;
 import com.builtbroken.jlib.lang.EnglishLetters;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests {@link com.builtbroken.jlib.lang.EnglishLetters}
@@ -12,59 +12,59 @@ import org.junit.Test;
 public class TestEnglishLettersEnum
 {
     @Test
-    public void testIsLetter()
+    public void testIsLetter() //TODO remake as a permutation test
     {
         for (int i = 0; i < EnglishLetters.values().length; i++)
         {
-            Assert.assertTrue(EnglishLetters.isLetter(EnglishLetters.values()[i].name().charAt(0)));
+            Assertions.assertTrue(EnglishLetters.isLetter(EnglishLetters.values()[i].name().charAt(0)));
         }
 
         for (int i = 0; i < EnglishLetters.values().length; i++)
         {
-            Assert.assertTrue(EnglishLetters.isLetter(EnglishLetters.values()[i].name().toLowerCase().charAt(0)));
+            Assertions.assertTrue(EnglishLetters.isLetter(EnglishLetters.values()[i].name().toLowerCase().charAt(0)));
         }
 
         for (int i = 0; i < Base10Numbers.values().length; i++)
         {
-            Assert.assertFalse(EnglishLetters.isLetter(Base10Numbers.values()[i].character()));
+            Assertions.assertFalse(EnglishLetters.isLetter(Base10Numbers.values()[i].character()));
         }
     }
 
     @Test
-    public void testUpper()
+    public void testUpper() //TODO remake as a permutation test
     {
         for (int i = 0; i < EnglishLetters.values().length; i++)
         {
-            Assert.assertTrue(EnglishLetters.isUpperCase(EnglishLetters.values()[i].name().charAt(0)));
+            Assertions.assertTrue(EnglishLetters.isUpperCase(EnglishLetters.values()[i].name().charAt(0)));
         }
 
         for (int i = 0; i < EnglishLetters.values().length; i++)
         {
-            Assert.assertFalse(EnglishLetters.isUpperCase(EnglishLetters.values()[i].name().toLowerCase().charAt(0)));
+            Assertions.assertFalse(EnglishLetters.isUpperCase(EnglishLetters.values()[i].name().toLowerCase().charAt(0)));
         }
 
         for (int i = 0; i < Base10Numbers.values().length; i++)
         {
-            Assert.assertFalse(EnglishLetters.isUpperCase(Base10Numbers.values()[i].character()));
+            Assertions.assertFalse(EnglishLetters.isUpperCase(Base10Numbers.values()[i].character()));
         }
     }
 
     @Test
-    public void testLower()
+    public void testLower() //TODO remake as a permutation test
     {
         for (int i = 0; i < EnglishLetters.values().length; i++)
         {
-            Assert.assertFalse(EnglishLetters.isLowerCase(EnglishLetters.values()[i].name().charAt(0)));
+            Assertions.assertFalse(EnglishLetters.isLowerCase(EnglishLetters.values()[i].name().charAt(0)));
         }
 
         for (int i = 0; i < EnglishLetters.values().length; i++)
         {
-            Assert.assertTrue(EnglishLetters.isLowerCase(EnglishLetters.values()[i].name().toLowerCase().charAt(0)));
+            Assertions.assertTrue(EnglishLetters.isLowerCase(EnglishLetters.values()[i].name().toLowerCase().charAt(0)));
         }
 
         for (int i = 0; i < Base10Numbers.values().length; i++)
         {
-            Assert.assertFalse(EnglishLetters.isLowerCase(Base10Numbers.values()[i].character()));
+            Assertions.assertFalse(EnglishLetters.isLowerCase(Base10Numbers.values()[i].character()));
         }
     }
 }
